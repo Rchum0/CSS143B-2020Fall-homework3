@@ -13,6 +13,9 @@ public class SingleLinkedList {
     // copy constructor
     public SingleLinkedList(SingleLinkedList list) {
         // homework
+        head = new ListNode();
+        head = list.head;
+        head.next = list.head;
     }
 
     public int removeAll(int valueToRemove) {
