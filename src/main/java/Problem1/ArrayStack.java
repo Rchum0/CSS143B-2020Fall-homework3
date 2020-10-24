@@ -14,7 +14,6 @@ public class ArrayStack<T> implements Stack<T> {
             this.size = 0;
             data = (T[]) new Object[capacity];
         }
-
     }
 
     @Override
@@ -23,7 +22,6 @@ public class ArrayStack<T> implements Stack<T> {
         System.out.println("Made it to push");
         System.out.println("This is the size:" + size);
         System.out.println("This is the length" + data.length);
-
          */
         if (this.size == data.length) {
             return false;
