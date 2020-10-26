@@ -1,4 +1,5 @@
 import Problem1.ArrayStack;
+import Problem1.LinkedListStack;
 import Problem1.MinStack;
 import Problem1.Stack;
 import org.junit.Test;
@@ -10,10 +11,10 @@ public class Problem1Test {
     @Test
     public void testStack() {
         Stack<Integer> arrayStack = new ArrayStack<>(10);
-        //Stack<Integer> linkedListStack = new LinkedListStack<>();
+        Stack<Integer> linkedListStack = new LinkedListStack<>();
 
         testIntegerStack(arrayStack);
-        //testIntegerStack(linkedListStack);
+        testIntegerStack(linkedListStack);
     }
 
     private void testIntegerStack(Stack<Integer> stack) {
