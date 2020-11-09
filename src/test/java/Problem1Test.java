@@ -32,7 +32,7 @@ public class Problem1Test {
             assertTrue(didPush);
             stack.pop();
         }
-
+        System.out.println(didPush);
         for (int i = 0; i < stackSize; i++) {
             Integer val = stack.pop();
             assertNotNull(val);
@@ -75,10 +75,15 @@ public class Problem1Test {
         for (int input : inputs) {
             minStack.push(input);
         }
+        System.out.println("Got here");
 
         for (int i = 0; i < inputs.length; i++) {
             Integer actual = minStack.getMin();
             Integer expect = inputs[inputs.length - i - 1];
+            System.out.println("My actual " + actual);
+            System.out.println("My expected " + expect);
+            //System.out.println(inputs.length);
+
             assertNotNull(actual);
             assertEquals(expect, actual);
             minStack.pop();
