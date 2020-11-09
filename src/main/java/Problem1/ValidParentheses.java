@@ -1,37 +1,31 @@
 package Problem1;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ValidParentheses {
 
     // Do not change signature (function name, parameters, return type)
     public static boolean isValid(String str) {
         // homework
-        Map<Character,Character> parenthesesMap = new HashMap<>();
-        parenthesesMap.put('(',')');
-        parenthesesMap.put('{', '}');
-        parenthesesMap.put('[', ']');
+        LinkedListStack<Character> parStack = new LinkedListStack<>();
+        if (str != null) {
+            for (int i = 0; i < str.length(); i++) {
+                char paren = str.charAt(i);
+                if (paren == '(' || paren == '{' || paren == '[')
+                    parStack.push(paren);
+                else {
+                    if (parStack.size() == 0) return false;
+                    char pair = parStack.pop();
+                    boolean match = false;
+                    if (pair == '(')
+                        match = (paren == ')');
+                    else if (pair == '{')
+                        match = (paren == '}');
+                    else if (pair == '[')
+                        match = (paren == ']');
 
-        ArrayStack parentheses = new ArrayStack(str.length());
-        for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            if(parenthesesMap.containsKey(c)){
-                parentheses.push(c);
-            }else {
-                if(parentheses.size() == 0){
-                    return false;
-                }
-                char target = (char)parentheses.peek();
-                parentheses.pop();
-                if(!parenthesesMap.containsKey(target) || parenthesesMap.get(target) != c){
-                    return false;
+                    if (!match) return false;
                 }
             }
         }
-        if(parentheses.size() > 0){
-            return false;
-        }
-        return true; // place holder
+        return parStack.size() == 0;
     }
 }

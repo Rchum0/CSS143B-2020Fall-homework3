@@ -5,42 +5,34 @@ public class MinStack extends ArrayStack<Integer> {
     // can only use Stack interface and ArrayStack from this folder
     // do not use Java Stack
 
-    // ArrayStack auxStack = new ArrayStack(size);
+    ArrayStack<Integer> auxStack;
 
     public MinStack(int size) {
         super(size);
-
+        this.auxStack = new ArrayStack<>(size);
     }
 
     @Override
     public boolean push(Integer val) {
-        super.push(val);
-        //push to auxStack too
-
-        if(minimums.size() < 0) {
-            return false;
-        }
-        if(val < tempMin){
-            tempMin = val;
-        }
-            tempMin = val;
-            minimums.push(val);
-            System.out.println("Number inserted: " + val);
-
-            return true; // place holder
+        if (val == null) return false;
+        if (super.size() == 0) this.auxStack.push(val);
+        else if (this.auxStack.peek() > val)
+            this.auxStack.push(val);
+        return super.push(val);
     }
 
     @Override
     public Integer pop() {
         // homework
-        //pop from auxStack
-        return super.pop; // place holder
+        if (super.size() == 0) return null;
+        if (this.auxStack.peek() == super.peek())
+            this.auxStack.pop();
+        return super.pop();
     }
 
     public Integer getMin() {
         // homework
         return auxStack.peek();
-
     }
 
 }
